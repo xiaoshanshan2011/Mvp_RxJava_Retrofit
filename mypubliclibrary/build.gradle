@@ -15,10 +15,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true//是否开启混淆
-            shrinkResources true//是否去除无效的资源文件
+            minifyEnabled false//是否开启混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //设置databinding
+    dataBinding {
+        enabled = true
     }
 }
 

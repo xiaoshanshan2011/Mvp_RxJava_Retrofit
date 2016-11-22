@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //设置databinding
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
