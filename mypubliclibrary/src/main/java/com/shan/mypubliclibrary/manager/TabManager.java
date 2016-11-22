@@ -84,6 +84,7 @@ public class TabManager {
         binding.textview.setText(texts[i]);
         if (i == 0) {
             binding.checkBox.setChecked(true);
+            binding.textview.setTextColor(activity.getResources().getColor(R.color.light_sea_red));
         }
         return binding.getRoot();
     }

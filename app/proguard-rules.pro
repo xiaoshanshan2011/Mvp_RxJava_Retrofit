@@ -55,3 +55,11 @@
 -keep class com.squareup.okhttp.** { *;}
 -dontwarn okio.**
 ###########################okHttp混淆 结束#################################
+
+###########################glide混淆#####################################
+-keep public class * implements com.bumptech.glide.module.GlideModule
+    -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+      **[] $VALUES;
+      public *;
+    }
+###########################glide混淆 结束#################################
