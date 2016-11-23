@@ -1,7 +1,8 @@
 package com.shan.mvp_rxjava_retrofit.presenter;
 
-import com.shan.mypubliclibrary.net.CancelRequestListener;
-import com.shan.mypubliclibrary.net.HttpRequestBuilder;
+
+import com.shan.mvp_rxjava_retrofit.net.CancelRequestListener;
+import com.shan.mvp_rxjava_retrofit.net.HttpRequestBuilder;
 
 import rx.Observable;
 import rx.Subscriber;

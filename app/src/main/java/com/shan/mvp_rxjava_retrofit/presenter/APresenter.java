@@ -5,4 +5,5 @@ package com.shan.mvp_rxjava_retrofit.presenter;
  */
 
 public interface APresenter {
+    void getMovieData();
 }

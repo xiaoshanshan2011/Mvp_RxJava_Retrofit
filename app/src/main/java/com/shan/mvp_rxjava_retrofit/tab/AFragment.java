@@ -1,44 +1,35 @@
 package com.shan.mvp_rxjava_retrofit.tab;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.shan.mvp_rxjava_retrofit.R;
-import com.shan.mvp_rxjava_retrofit.bean.TestBean;
-import com.shan.mvp_rxjava_retrofit.databinding.FragmentABinding;
+import com.shan.mvp_rxjava_retrofit.bean.MovieBean;
 import com.shan.mvp_rxjava_retrofit.databinding.ItemBinding;
-import com.shan.mypubliclibrary.adapter.CommonAdapter;
-import com.shan.mypubliclibrary.ui.fragment.BaseFragment;
+import com.shan.mvp_rxjava_retrofit.presenter.APresenterImpl;
+import com.shan.mvp_rxjava_retrofit.view.AView;
+import com.shan.mypubliclibrary.ui.fragment.LibFragment;
 import com.shan.mypubliclibrary.utils.ImageCacheUtils;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.shan.mypubliclibrary.utils.ToastUtils;
 
 /**
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class AFragment extends BaseFragment<FragmentABinding, Object> {
+public class AFragment extends LibFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView {
+    private APresenterImpl aPresenter;
+
     @Override
-    public int bindLayout() {
-        return R.layout.fragment_a;
+    public int bindItemLayout() {
+        return R.layout.item;
     }
 
     @Override
     public void initOnCreate() {
         super.initOnCreate();
-        List<TestBean> list = new ArrayList<>();
-        for (int i = 0; i < 22; i++) {
-            list.add(new TestBean("ssssss" + i));
-        }
-
-        mBinding.lisView.setAdapter(new CommonAdapter<ItemBinding, TestBean>(getActivity(), R.layout.item, list) {
-            @Override
-            protected void getItem(ItemBinding binding, TestBean bean, int position) {
-                binding.textView4.setText(bean.getName());
-            }
-        });
-
-        ImageCacheUtils.loadImage(getActivity(), "http://t1.niutuku.com/960/38/38-82994.jpg", mBinding.imageView);
+        aPresenter = new APresenterImpl(this, getActivity());
+        aPresenter.getMovieData();
+        showPullRefresh();
     }
 
     @Override
@@ -47,5 +38,40 @@ public class AFragment extends BaseFragment<FragmentABinding, Object> {
         setTitle("框架之美");
         titleBinding.btnLeft.setVisibility(View.INVISIBLE);
         titleBinding.btnRight.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    protected void getListVewItem(ItemBinding binding, MovieBean.ShowapiResBodyBean.DatalistBean item, int position) {
+        super.getListVewItem(binding, item, position);
+        binding.textView4.setText(item.getMovieName());
+    }
+
+    @Override
+    public void onSuccess(MovieBean movieBean) {
+        setData(movieBean.getShowapi_res_body().getDatalist());
+        closeRefresh();
+    }
+
+    @Override
+    public void onFailure(Throwable e) {
+        ToastUtils.toast(e.getMessage());
+        closeRefresh();
+    }
+
+    private ImageView imageView;
+
+    @Override
+    public void loadHeadView(String url) {
+        if (imageView == null) {
+            imageView = new ImageView(getActivity());
+            lvBinding.listView.addHeaderView(imageView);
+        }
+        ImageCacheUtils.loadImage(getActivity(), url, imageView);
+    }
+
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+        aPresenter.getMovieData();
     }
 }

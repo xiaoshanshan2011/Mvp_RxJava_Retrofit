@@ -3,14 +3,19 @@ package com.shan.mvp_rxjava_retrofit.tab;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 
 import com.shan.mvp_rxjava_retrofit.R;
-import com.shan.mypubliclibrary.databinding.ActivityMainBinding;
+import com.shan.mvp_rxjava_retrofit.databinding.ActivityMainBinding;
 import com.shan.mypubliclibrary.listener.TitleBarListener;
 import com.shan.mypubliclibrary.manager.TabManager;
+import com.shan.mypubliclibrary.ui.activity.LibActivity;
 
-public class MainActivity extends FragmentActivity implements TitleBarListener {
+public class MainActivity extends LibActivity<ActivityMainBinding, Object> implements TitleBarListener {
+    @Override
+    public int bindItemLayout() {
+        return super.bindItemLayout();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
