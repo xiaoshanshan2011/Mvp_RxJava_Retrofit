@@ -1,4 +1,4 @@
-package com.shan.mypubliclibrary.net;
+package com.shan.mvp_rxjava_retrofit.net;
 
 import android.content.Context;
 import android.content.DialogInterface;

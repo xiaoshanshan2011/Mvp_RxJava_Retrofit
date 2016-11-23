@@ -17,14 +17,9 @@ import com.shan.mypubliclibrary.adapter.CommonAdapter;
 import com.shan.mypubliclibrary.databinding.ListviewLayoutBinding;
 import com.shan.mypubliclibrary.databinding.TitletarLayoutBinding;
 import com.shan.mypubliclibrary.listener.BindListener;
-import com.shan.mypubliclibrary.net.CancelRequestListener;
-import com.shan.mypubliclibrary.net.HttpRequestBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
 
 /**
  * Created by 陈俊山 on 2016/8/30.
@@ -33,9 +28,8 @@ import rx.Subscription;
  * @param <D> ListVIew Item数据类型
  */
 
-public abstract class BaseFragment<T extends ViewDataBinding, D> extends Fragment implements CancelRequestListener, BindListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment implements BindListener, SwipeRefreshLayout.OnRefreshListener {
     protected final String TAG = this.getClass().getName();
-    protected Subscription subscription;
     protected ListviewLayoutBinding lvBinding;//当子类是列表的时候这个才可用
     protected T mBinding;//内容布局
     protected TitletarLayoutBinding titleBinding;//头部布局
@@ -89,20 +83,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, D> extends Fragmen
     }
 
     @Override
-    public void cancelRequest() {
-        if (subscription != null) {
-            //取消Http请求
-            subscription.unsubscribe();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        cancelRequest();
-    }
-
-    @Override
     public void initOnCreate() {
 
     }
@@ -147,13 +127,12 @@ public abstract class BaseFragment<T extends ViewDataBinding, D> extends Fragmen
     protected CommonAdapter<T, D> adapter = null;
 
     public void setData(List<D> datas) {
-        if (datas == null && lvBinding != null) {
-            lvBinding.listView.setAdapter(null);
+        if (lvBinding == null) {
             return;
         }
 
-        if (lvBinding == null) {
-            return;
+        if (datas == null && lvBinding != null) {
+            datas = new ArrayList<>();
         }
 
         if (adapter == null) {
@@ -210,7 +189,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, D> extends Fragmen
         super.onPause();
         if (lvBinding != null && lvBinding.refreshLayout.isRefreshing()) {
             lvBinding.refreshLayout.setRefreshing(false);
-            cancelRequest();
         }
     }
 
@@ -272,9 +250,5 @@ public abstract class BaseFragment<T extends ViewDataBinding, D> extends Fragmen
         if (lvBinding != null) {
             lvBinding.refreshLayout.setRefreshing(false);
         }
-    }
-
-    public <T> void startReust(Observable observable, Subscriber<T> subscriber) {
-        subscription = HttpRequestBuilder.getInstance().execute(observable, subscriber);
     }
 }

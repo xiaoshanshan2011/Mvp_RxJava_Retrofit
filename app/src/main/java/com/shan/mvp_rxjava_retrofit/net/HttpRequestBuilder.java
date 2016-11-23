@@ -1,4 +1,4 @@
-package com.shan.mypubliclibrary.net;
+package com.shan.mvp_rxjava_retrofit.net;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
