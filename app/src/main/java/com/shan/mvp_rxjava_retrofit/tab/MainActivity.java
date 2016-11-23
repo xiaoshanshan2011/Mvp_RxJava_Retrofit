@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 
 import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.databinding.ActivityMainBinding;
+import com.shan.mvp_rxjava_retrofit.ui.activity.BaseActivity;
 import com.shan.mypubliclibrary.listener.TitleBarListener;
 import com.shan.mypubliclibrary.manager.TabManager;
-import com.shan.mypubliclibrary.ui.activity.LibActivity;
 
-public class MainActivity extends LibActivity<ActivityMainBinding, Object> implements TitleBarListener {
+public class MainActivity extends BaseActivity<ActivityMainBinding, Object> implements TitleBarListener {
     @Override
     public int bindItemLayout() {
         return super.bindItemLayout();

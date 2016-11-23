@@ -7,8 +7,8 @@ import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.bean.MovieBean;
 import com.shan.mvp_rxjava_retrofit.databinding.ItemBinding;
 import com.shan.mvp_rxjava_retrofit.presenter.APresenterImpl;
+import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
 import com.shan.mvp_rxjava_retrofit.view.AView;
-import com.shan.mypubliclibrary.ui.fragment.LibFragment;
 import com.shan.mypubliclibrary.utils.ImageCacheUtils;
 import com.shan.mypubliclibrary.utils.ToastUtils;
 
@@ -16,7 +16,7 @@ import com.shan.mypubliclibrary.utils.ToastUtils;
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class AFragment extends LibFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView {
+public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView {
     private APresenterImpl aPresenter;
 
     @Override

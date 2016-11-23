@@ -2,13 +2,13 @@ package com.shan.mvp_rxjava_retrofit.tab;
 
 import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentBBinding;
-import com.shan.mypubliclibrary.ui.fragment.LibFragment;
+import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
 
 /**
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class BFragment extends LibFragment<FragmentBBinding,Object> {
+public class BFragment extends BaseFragment<FragmentBBinding,Object> {
     @Override
     public int bindLayout() {
         return R.layout.fragment_b;
