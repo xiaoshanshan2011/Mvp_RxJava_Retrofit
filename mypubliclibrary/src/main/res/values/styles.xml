@@ -1,0 +1,15 @@
+<resources>
+
+    <!--向上弹起向下滑落-->
+    <style name="dialog_in_out" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out</item>
+    </style>
+
+    <!--从左弹出从右关闭-->
+    <style name="dialog_left_right" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_left</item>
+        <item name="android:windowExitAnimation">@anim/dialog_right</item>
+    </style>
+
+</resources>
