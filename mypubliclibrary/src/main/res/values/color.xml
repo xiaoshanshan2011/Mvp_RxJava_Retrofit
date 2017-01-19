@@ -9,7 +9,7 @@
     <color name="medium_slate_blue">#7B68EE</color><!--中暗蓝色/中板岩蓝-->
     <color name="white">#FFFFFF</color><!--白色-->
     <color name="white_smoke">#F5F5F5</color><!--白烟-->
-    <color name="divider">#F0F0F0</color><!--白烟-->
+    <color name="divider">#eeeeee</color><!--白烟-->
     <color name="gainsboro">#DCDCDC</color><!--淡灰色-->
     <color name="light_grey">#D3D3D3</color><!--浅灰色-->
     <color name="silver">#C0C0C0</color><!--银灰色-->
@@ -20,4 +20,5 @@
     <color name="light_black">#272636</color><!--线黑色-->
     <color name="light_sea_green">#00bb9c</color><!--浅海洋绿-->
     <color name="light_sea_red">#be0e0e</color><!--浅海洋绿-->
+    <color name="color_ff9c0d0d">#FF9C0D0D</color>
 </resources>

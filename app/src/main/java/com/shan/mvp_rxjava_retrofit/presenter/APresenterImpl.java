@@ -29,12 +29,12 @@ public class APresenterImpl extends PresenterImpl implements APresenter {
     public void getMovieData() {
         Map<String, String> map = new HashMap<>();
         map.put("showapi_appid", "4670");
-        map.put("showapi_timestamp", "20161123191754");
-        map.put("showapi_sign", "fa0baa587f1dabbcd73dc15d7b14595a");
+        map.put("showapi_timestamp", "20170111123341");
+        map.put("showapi_sign", "eb2cb15495e1b90099c11b3e53bcbb02");
         SubscriberCallBack<MovieBean> subscriber = new SubscriberCallBack<MovieBean>(context, this) {
             @Override
             protected void onSuccess(MovieBean movieBean) {
-                aView.loadHeadView("http://img2.3lian.com/2014/f3/57/d/15.jpg");
+                aView.loadHeadView("http://s2.doyo.cn/img/53/84/20049e9e78eb500000ab.jpg");
                 aView.onSuccess(movieBean);
             }
 

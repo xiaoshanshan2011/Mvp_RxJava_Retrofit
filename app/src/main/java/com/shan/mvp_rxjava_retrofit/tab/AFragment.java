@@ -47,6 +47,12 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
     }
 
     @Override
+    protected void onItemClick(MovieBean.ShowapiResBodyBean.DatalistBean bean, int position) {
+        super.onItemClick(bean, position);
+        ToastUtils.toast(bean.getMovieName() + ":" + position);
+    }
+
+    @Override
     public void onSuccess(MovieBean movieBean) {
         setData(movieBean.getShowapi_res_body().getDatalist());
         closeRefresh();

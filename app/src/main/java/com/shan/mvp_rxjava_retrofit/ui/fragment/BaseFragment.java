@@ -9,4 +9,5 @@ import com.shan.mypubliclibrary.ui.fragment.LibFragment;
  */
 
 public class BaseFragment<T extends ViewDataBinding, D> extends LibFragment<T,D> {
+
 }

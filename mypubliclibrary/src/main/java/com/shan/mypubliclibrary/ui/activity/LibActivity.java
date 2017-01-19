@@ -10,7 +10,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.shan.mypubliclibrary.R;
@@ -38,7 +37,7 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         //禁止横竖屏切换
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //设置状态栏颜色
-        StatusBar.showStatusBar(this, R.color.light_sea_red);
+        StatusBar.showStatusBar(this, R.color.color_ff9c0d0d);
         //实例化一个线性布局
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -101,9 +100,10 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
     /**
      * 获取ListViewd Item的每个点击事件
      *
+     * @param bean
      * @param position
      */
-    protected void itemOnclick(int position) {
+    protected void onItemClick(D bean, int position) {
     }
 
     protected CommonAdapter<T, D> adapter = null;
@@ -125,14 +125,13 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
                 protected void getItem(T binding, D bean, int position) {
                     getListVewItem(binding, bean, position);
                 }
+
+                @Override
+                protected void itemOnclick(D bean, int position) {
+                    onItemClick(bean, position);
+                }
             };
             lvBinding.listView.setAdapter(adapter);
-            lvBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    itemOnclick(position);
-                }
-            });
         } else {
             adapter.updata(datas);
         }

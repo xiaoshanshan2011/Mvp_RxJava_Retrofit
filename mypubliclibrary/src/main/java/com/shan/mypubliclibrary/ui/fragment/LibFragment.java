@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.shan.mypubliclibrary.R;
@@ -119,9 +118,10 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
     /**
      * 获取ListViewd Item的每个点击事件
      *
+     * @param bean
      * @param position
      */
-    protected void itemOnclick(int position) {
+    protected void onItemClick(D bean, int position) {
     }
 
     protected CommonAdapter<T, D> adapter = null;
@@ -142,14 +142,13 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
                 protected void getItem(T binding, D bean, int position) {
                     getListVewItem(binding, bean, position);
                 }
+
+                @Override
+                protected void itemOnclick(D bean, int position) {
+                    onItemClick(bean, position);
+                }
             };
             lvBinding.listView.setAdapter(adapter);
-            lvBinding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    itemOnclick(position);
-                }
-            });
         } else {
             adapter.updata(datas);
         }

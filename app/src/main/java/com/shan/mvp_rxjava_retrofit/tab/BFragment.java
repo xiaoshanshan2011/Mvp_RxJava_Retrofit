@@ -35,4 +35,11 @@ public class BFragment extends BaseFragment<FragmentBBinding, Object> {
             }
         });
     }
+
+    @Override
+    public void initTitleBar() {
+        super.initTitleBar();
+        setTitle("关注");
+        titleBinding.btnLeft.setVisibility(View.INVISIBLE);
+    }
 }

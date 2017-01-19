@@ -44,7 +44,7 @@ public abstract class CommonAdapter<T extends ViewDataBinding, D> extends BaseAd
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         T binding = null;
         if (convertView == null) {
             binding = DataBindingUtil.inflate(LayoutInflater.from(context), res, parent, false);
@@ -54,10 +54,18 @@ public abstract class CommonAdapter<T extends ViewDataBinding, D> extends BaseAd
             binding = (T) convertView.getTag();
         }
         getItem(binding, datas.get(position), position);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemOnclick(datas.get(position), position);
+            }
+        });
         return convertView;
     }
 
     protected abstract void getItem(T binding, D bean, int position);
+
+    protected abstract void itemOnclick(D bean, int position);
 
     public void updata(List<D> datas) {
         this.datas = datas;
