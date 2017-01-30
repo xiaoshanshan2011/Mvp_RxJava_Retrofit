@@ -3,6 +3,7 @@ package com.shan.mvp_rxjava_retrofit.tab;
 import android.view.View;
 
 import com.shan.mvp_rxjava_retrofit.R;
+import com.shan.mvp_rxjava_retrofit.databinding.FragmentCBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentDBinding;
 import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
 
@@ -10,10 +11,10 @@ import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class CFragment extends BaseFragment<FragmentDBinding, Object> {
+public class CFragment extends BaseFragment<FragmentCBinding, Object> {
     @Override
     public int bindLayout() {
-        return R.layout.fragment_b;
+        return R.layout.fragment_c;
     }
 
     @Override
