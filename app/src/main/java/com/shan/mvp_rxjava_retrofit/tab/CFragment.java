@@ -26,22 +26,5 @@ public class CFragment extends BaseFragment<FragmentCBinding, Object> {
     @Override
     public void initOnCreate() {
         super.initOnCreate();
-
-        mBinding.textView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*new DownloadFile(getActivity()) {
-                    @Override
-                    protected void onProgress(float fraction) {
-                        Log.i(TAG, "onProgress: " + fraction);
-                    }
-
-                    @Override
-                    protected void onFinish() {
-                        Log.i(TAG, "onFinish: ");
-                    }
-                }.start("http://img2.niutuku.com/desk/1208/1405/ntk-1405-4033.jpg");*/
-            }
-        });
     }
 }
