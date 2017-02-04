@@ -57,8 +57,8 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
             linearLayout.addView(lvBinding.getRoot(), content_params);
         }
         setContentView(linearLayout);
-        initTitleBar();
         initOnCreate();
+        initTitleBar();
         getDatas();
         bindDatas();
     }

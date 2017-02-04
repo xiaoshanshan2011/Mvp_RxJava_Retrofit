@@ -1,10 +1,12 @@
 package com.shan.mvp_rxjava_retrofit.tab;
 
+import android.databinding.DataBindingUtil;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.bean.MovieBean;
+import com.shan.mvp_rxjava_retrofit.databinding.FragmentAHeadviewBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.ItemBinding;
 import com.shan.mvp_rxjava_retrofit.presenter.APresenterImpl;
 import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
@@ -30,6 +32,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         aPresenter = new APresenterImpl(this, getActivity());
         aPresenter.getMovieData();
         showPullRefresh();
+        initHeadView();
     }
 
     @Override
@@ -64,15 +67,20 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         closeRefresh();
     }
 
-    private ImageView imageView;
-
     @Override
     public void loadHeadView(String url) {
-        if (imageView == null) {
-            imageView = new ImageView(getActivity());
-            lvBinding.listView.addHeaderView(imageView);
-        }
-        ImageCacheUtils.loadImage(getActivity(), url, imageView);
+        ImageCacheUtils.loadImage(getActivity(), url, mHeadviewBinding.imageView);
+    }
+
+
+    private FragmentAHeadviewBinding mHeadviewBinding;
+
+    /**
+     * 初始化头部View
+     */
+    private void initHeadView() {
+        mHeadviewBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.fragment_a_headview, null, false);
+        lvBinding.listView.addHeaderView(mHeadviewBinding.getRoot());
     }
 
     @Override

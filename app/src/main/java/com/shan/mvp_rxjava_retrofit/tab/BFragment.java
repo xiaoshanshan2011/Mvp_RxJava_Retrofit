@@ -4,9 +4,9 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.shan.mvp_rxjava_retrofit.R;
-import com.shan.mvp_rxjava_retrofit.databinding.DialogTestBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentBBinding;
 import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
+import com.shan.mypubliclibrary.utils.ImageCacheUtils;
 import com.shan.mypubliclibrary.widget.CommonDialog;
 
 /**
@@ -31,9 +31,13 @@ public class BFragment extends BaseFragment<FragmentBBinding, Object> {
                         .setWidth(0.8f)
                         .setAnimResId(R.style.dialog_in_out)
                         .build();
-                DialogTestBinding binding = (DialogTestBinding) dialog.show();
+                dialog.show();
             }
         });
+
+        mBinding.circleImg.setBorderWidth(10);
+        mBinding.circleImg.setBorderColor(getActivity().getResources().getColor(R.color.gray));
+        ImageCacheUtils.loadImage(getActivity(),"http://img2.touxiang.cn/file/20161011/e2556c24beea824f82ce4dddc0f5f311.jpg",mBinding.circleImg);
     }
 
     @Override

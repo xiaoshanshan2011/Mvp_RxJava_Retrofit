@@ -1,18 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shan.mypubliclibrary">
-    <!--往sdcard中写入数据的权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <!--在sdcard中创建/删除文件的权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+          package="com.shan.mypubliclibrary">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".ui.activity.CommonActivity" />
+        <activity android:name=".ui.activity.CommonActivity"/>
+
+        <service android:name=".utils.download.DownloadService"/>
     </application>
 
 </manifest>
