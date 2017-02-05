@@ -1,5 +1,7 @@
 package com.shan.mvp_rxjava_retrofit.tab;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.shan.mvp_rxjava_retrofit.R;
@@ -24,7 +26,7 @@ public class CFragment extends BaseFragment<FragmentCBinding, Object> {
     }
 
     @Override
-    public void initOnCreate() {
-        super.initOnCreate();
+    public void initOnCreate(@Nullable Bundle savedInstanceState) {
+        super.initOnCreate(savedInstanceState);
     }
 }

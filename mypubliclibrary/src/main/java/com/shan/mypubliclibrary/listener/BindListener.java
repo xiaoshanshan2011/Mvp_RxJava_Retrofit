@@ -1,5 +1,7 @@
 package com.shan.mypubliclibrary.listener;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 /**
@@ -15,13 +17,7 @@ public interface BindListener {
     int bindItemLayout();
 
     /*初始化操作*/
-    void initOnCreate();
-
-    /*获取数据*/
-    void getDatas();
-
-    /*绑定数据*/
-    void bindDatas();
+    void initOnCreate(@Nullable Bundle savedInstanceState);
 
     /*初始化TitleBar*/
     void initTitleBar();

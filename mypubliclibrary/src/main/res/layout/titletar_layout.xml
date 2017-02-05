@@ -18,8 +18,8 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 android:visibility="gone"/>
@@ -45,7 +45,21 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:visibility="gone"/>
         </RelativeLayout>
     </LinearLayout>
 </layout>

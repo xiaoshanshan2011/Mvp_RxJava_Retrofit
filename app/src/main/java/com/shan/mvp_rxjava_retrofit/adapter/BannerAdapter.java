@@ -27,6 +27,6 @@ public class BannerAdapter implements Holder<BannerBean> {
 
     @Override
     public void UpdateUI(Context context, int position, BannerBean data) {
-        ImageCacheUtils.loadImage(context, data.getImage(), mImageView);
+        ImageCacheUtils.loadImage(context, data.getImage(), 400, 100, mImageView);
     }
 }

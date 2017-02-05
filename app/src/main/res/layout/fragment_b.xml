@@ -7,16 +7,9 @@
         android:gravity="center|top"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
+        <com.amap.api.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView2"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>

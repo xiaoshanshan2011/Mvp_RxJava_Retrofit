@@ -50,10 +50,8 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
                 mBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), bindLayout(), container, false);
                 LinearLayout.LayoutParams content_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 linearLayout.addView(mBinding.getRoot(), content_params);
-                initOnCreate();
+                initOnCreate(savedInstanceState);
                 initTitleBar();
-                getDatas();
-                bindDatas();
             }
         } else if (bindItemLayout() != 0) {
             if (linearLayout == null) {
@@ -65,10 +63,8 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
                 lvBinding.refreshLayout.setEnabled(false);//关闭下拉刷新
                 LinearLayout.LayoutParams content_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 linearLayout.addView(lvBinding.getRoot(), content_params);
-                initOnCreate();
+                initOnCreate(savedInstanceState);
                 initTitleBar();
-                getDatas();
-                bindDatas();
             }
         } else {
             return null;
@@ -82,17 +78,7 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
     }
 
     @Override
-    public void initOnCreate() {
-
-    }
-
-    @Override
-    public void getDatas() {
-
-    }
-
-    @Override
-    public void bindDatas() {
+    public void initOnCreate(@Nullable Bundle savedInstanceState) {
 
     }
 

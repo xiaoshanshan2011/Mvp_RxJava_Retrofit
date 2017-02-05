@@ -74,6 +74,10 @@ public class MovieBean extends BaseBean {
             private String MovieName;
             private String TodayBox;
 
+            public DatalistBean(String movieName) {
+                MovieName = movieName;
+            }
+
             public String getAvgPeople() {
                 return AvgPeople;
             }

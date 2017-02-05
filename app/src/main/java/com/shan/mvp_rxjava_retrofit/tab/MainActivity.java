@@ -18,8 +18,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, Object> impl
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initOnCreate(@Nullable Bundle savedInstanceState) {
+        super.initOnCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         TabManager tabManager = new TabManager(this, binding.tabhost, TabConstant.MAIN_FRAGMENT, TabConstant.MAIN_IAMGEVIEW, TabConstant.MAIN_TEXTVIEW);
         tabManager.initTab(R.id.fl_content);
