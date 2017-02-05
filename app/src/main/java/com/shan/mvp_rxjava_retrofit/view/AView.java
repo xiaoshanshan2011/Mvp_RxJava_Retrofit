@@ -11,5 +11,5 @@ public interface AView {
 
     void onFailure(Throwable e);
 
-    void loadHeadView(String url);
+    void loadViewPager();
 }

@@ -7,7 +7,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="7dp">
+        android:padding="5dp">
 
         <CheckBox
             android:id="@+id/checkBox"

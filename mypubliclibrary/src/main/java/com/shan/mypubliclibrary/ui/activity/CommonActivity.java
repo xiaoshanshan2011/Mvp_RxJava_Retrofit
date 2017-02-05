@@ -26,7 +26,7 @@ public class CommonActivity extends FragmentActivity {
         //禁止横竖屏切换
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //设置状态栏颜色
-        StatusBar.showStatusBar(this, R.color.color_ff9c0d0d);
+        StatusBar.showStatusBar(this, R.color.color_0062fd);
 
         try {
             Class fragmentClass = (Class) getIntent().getSerializableExtra(FRAGMENT_CLASS);

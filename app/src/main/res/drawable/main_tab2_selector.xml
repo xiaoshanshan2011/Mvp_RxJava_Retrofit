@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@mipmap/ic_jiaguanzhu_focused" android:state_checked="true" />
-    <item android:drawable="@mipmap/ic_jiaguanzhu_focused" android:state_selected="true" />
-    <item android:drawable="@mipmap/ic_jiaguanzhu_focused" android:state_pressed="true" />
-    <item android:drawable="@mipmap/ic_jiaguanzhu_nomal" android:state_checked="false" />
-    <item android:drawable="@mipmap/ic_jiaguanzhu_nomal" />
+    <item android:drawable="@mipmap/ic_main_02_focused" android:state_checked="true" />
+    <item android:drawable="@mipmap/ic_main_02_focused" android:state_selected="true" />
+    <item android:drawable="@mipmap/ic_main_02_focused" android:state_pressed="true" />
+    <item android:drawable="@mipmap/ic_main_02_nomal" android:state_checked="false" />
+    <item android:drawable="@mipmap/ic_main_02_nomal" />
 
 </selector>

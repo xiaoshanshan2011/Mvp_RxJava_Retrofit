@@ -11,9 +11,10 @@ import com.shan.mypubliclibrary.listener.TitleBarListener;
 import com.shan.mypubliclibrary.manager.TabManager;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, Object> implements TitleBarListener {
+
     @Override
-    public int bindItemLayout() {
-        return super.bindItemLayout();
+    public int bindLayout() {
+        return R.layout.activity_main;
     }
 
     @Override

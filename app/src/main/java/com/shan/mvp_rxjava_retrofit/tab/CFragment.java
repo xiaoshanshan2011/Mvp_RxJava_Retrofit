@@ -19,7 +19,7 @@ public class CFragment extends BaseFragment<FragmentCBinding, Object> {
     @Override
     public void initTitleBar() {
         super.initTitleBar();
-        setTitle("圈子");
+        setTitle("消息");
         titleBinding.btnLeft.setVisibility(View.INVISIBLE);
     }
 

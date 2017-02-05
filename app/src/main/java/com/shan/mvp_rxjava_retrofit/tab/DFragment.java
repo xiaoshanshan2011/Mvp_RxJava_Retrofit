@@ -71,7 +71,7 @@ public class DFragment extends BaseFragment<FragmentDBinding, Object> {
     @Override
     public void initTitleBar() {
         super.initTitleBar();
-        setTitle("自定义View");
+        setTitle("个人");
         titleBinding.btnLeft.setVisibility(View.INVISIBLE);
     }
 }

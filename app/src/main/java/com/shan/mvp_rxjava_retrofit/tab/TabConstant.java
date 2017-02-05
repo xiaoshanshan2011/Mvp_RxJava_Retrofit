@@ -12,5 +12,5 @@ public class TabConstant {
 
     public static int MAIN_IAMGEVIEW[] = {R.drawable.main_tab1_selector, R.drawable.main_tab2_selector, R.drawable.main_tab3_selector, R.drawable.main_tab4_selector};
 
-    public static String MAIN_TEXTVIEW[] = {"应用", "关注", "圈子", "设置"};
+    public static String MAIN_TEXTVIEW[] = {"首页", "周边", "消息", "个人"};
 }

@@ -37,7 +37,7 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         //禁止横竖屏切换
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //设置状态栏颜色
-        StatusBar.showStatusBar(this, R.color.color_ff9c0d0d);
+        StatusBar.showStatusBar(this, R.color.color_0062fd);
         //实例化一个线性布局
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);

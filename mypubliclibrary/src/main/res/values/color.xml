@@ -21,4 +21,6 @@
     <color name="light_sea_green">#00bb9c</color><!--浅海洋绿-->
     <color name="light_sea_red">#be0e0e</color><!--浅海洋绿-->
     <color name="color_ff9c0d0d">#FF9C0D0D</color>
+    <color name="color_0072fd">#0072FD</color>
+    <color name="color_0062fd">#0062FD</color>
 </resources>

@@ -62,7 +62,7 @@ public class TabManager {
                     if (texts[i].equals(s)) {
                         mTitleBarListener.setTitleBarTitle(i);
                         list.get(i).checkBox.setChecked(true);
-                        list.get(i).textview.setTextColor(activity.getResources().getColor(R.color.light_sea_red));
+                        list.get(i).textview.setTextColor(activity.getResources().getColor(R.color.color_0072fd));
                     } else {
                         list.get(i).checkBox.setChecked(false);
                         list.get(i).textview.setTextColor(activity.getResources().getColor(R.color.light_black));
@@ -84,7 +84,7 @@ public class TabManager {
         binding.textview.setText(texts[i]);
         if (i == 0) {
             binding.checkBox.setChecked(true);
-            binding.textview.setTextColor(activity.getResources().getColor(R.color.light_sea_red));
+            binding.textview.setTextColor(activity.getResources().getColor(R.color.color_0072fd));
         }
         return binding.getRoot();
     }

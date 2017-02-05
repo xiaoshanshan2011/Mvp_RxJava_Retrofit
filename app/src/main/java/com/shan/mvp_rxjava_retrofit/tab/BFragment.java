@@ -43,7 +43,7 @@ public class BFragment extends BaseFragment<FragmentBBinding, Object> {
     @Override
     public void initTitleBar() {
         super.initTitleBar();
-        setTitle("关注");
+        setTitle("周边");
         titleBinding.btnLeft.setVisibility(View.INVISIBLE);
     }
 }
