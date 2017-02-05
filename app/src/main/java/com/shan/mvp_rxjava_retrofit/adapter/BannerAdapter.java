@@ -12,7 +12,7 @@ import com.shan.mypubliclibrary.utils.ImageCacheUtils;
 
 
 /**
- * Created by roocky on 03/09.
+ * Created by chenjunshan on 2017/02/05.
  * <p>
  * 图片轮播控件ConvenientBanner
  */
@@ -27,6 +27,6 @@ public class BannerAdapter implements Holder<BannerBean> {
 
     @Override
     public void UpdateUI(Context context, int position, BannerBean data) {
-        ImageCacheUtils.loadImage(context, data.getImage(), 400, 100, mImageView);
+        ImageCacheUtils.loadImage(context, data.getImage(), 280, 100, mImageView);
     }
 }

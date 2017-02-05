@@ -1,5 +1,6 @@
 package com.shan.mvp_rxjava_retrofit.tab;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -20,8 +21,10 @@ import com.shan.mvp_rxjava_retrofit.databinding.FragmentAViewpagerBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.ItemBinding;
 import com.shan.mvp_rxjava_retrofit.presenter.APresenterImpl;
 import com.shan.mvp_rxjava_retrofit.ui.fragment.BaseFragment;
+import com.shan.mvp_rxjava_retrofit.ui.fragment.SearchFragment;
 import com.shan.mvp_rxjava_retrofit.view.AView;
 import com.shan.mypubliclibrary.adapter.CommonAdapter;
+import com.shan.mypubliclibrary.ui.activity.CommonActivity;
 import com.shan.mypubliclibrary.utils.ImageCacheUtils;
 import com.shan.mypubliclibrary.utils.ToastUtils;
 
@@ -32,7 +35,7 @@ import java.util.List;
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView {
+public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView, View.OnClickListener {
     private APresenterImpl aPresenter;
 
     @Override
@@ -62,17 +65,24 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         titleBinding.tvLeft.setCompoundDrawablePadding(5);
         titleBinding.tvLeft.setCompoundDrawables(null, null, drawable, null);
+        titleBinding.btnRight.setOnClickListener(this);
+        //titleBinding.btnLeft.setOnClickListener(this);
+    }
+
+    @Override
+    public void onLeftClick() {
+        super.onLeftClick();
     }
 
     @Override
     protected void getListVewItem(ItemBinding binding, MovieBean.ShowapiResBodyBean.DatalistBean item, int position) {
         super.getListVewItem(binding, item, position);
         binding.textView4.setText(item.getMovieName());
-        if (position % 2 == 0) {
+        /*if (position % 2 == 0) {
             ImageCacheUtils.loadImage(getActivity(), "http://p5.qhmsg.com/dr/220__/t0161be18d99eab2224.jpg", binding.imageView);
         } else {
             ImageCacheUtils.loadImage(getActivity(), "http://www.2cto.com/uploadfile/2014/0725/20140725080303807.jpg", binding.imageView);
-        }
+        }*/
 
     }
 
@@ -86,7 +96,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
     public void onSuccess(MovieBean movieBean) {
         List<MovieBean.ShowapiResBodyBean.DatalistBean> datalist = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             datalist.add(new MovieBean.ShowapiResBodyBean.DatalistBean("heheda"));
         }
 
@@ -131,7 +141,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
     }
 
     private String[] typeImages = {
-            "http://pic6.nipic.com/20100329/4485525_134844080884_2.jpg",
+            "http://image2.cnpp.cn/upload/images/20150311/11075627589_800x550.jpg",
             "http://img.0731fdc.com/home/photo/prim/20160215_093006_600.jpg",
             "http://pic.qiantucdn.com/58pic/18/06/56/76w58PICtNC_1024.jpg",
             "http://image8.huangye88.com/2015/04/05/764fe006fae80583.jpg",
@@ -152,7 +162,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         mTypeLayoutBinding.baseGridView.setAdapter(new CommonAdapter<FragmentATypeItemLayoutBinding, MainTypeBean>(getActivity(), R.layout.fragment_a_type_item_layout, list) {
             @Override
             protected void getItem(FragmentATypeItemLayoutBinding binding, MainTypeBean bean, int position) {
-                ImageCacheUtils.loadImage(getActivity(), bean.getImage(), 80, 80, binding.circleImageView);
+                ImageCacheUtils.loadImage(getActivity(), bean.getImage(), 60, 60, binding.circleImageView);
                 binding.tvName.setText(bean.getName());
             }
 
@@ -181,5 +191,19 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
     public void onRefresh() {
         super.onRefresh();
         aPresenter.getMovieData();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_right:
+                Intent intent = new Intent(getActivity(), CommonActivity.class);
+                intent.putExtra(CommonActivity.FRAGMENT_CLASS, SearchFragment.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_left:
+
+                break;
+        }
     }
 }

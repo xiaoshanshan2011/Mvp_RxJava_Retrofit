@@ -150,21 +150,8 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         }
     }
 
-    @Override
-    public void setTitleBarVisibility(int visibility) {
-        titleBinding.getRoot().setVisibility(visibility);
-    }
-
     public void setTitle(String text) {
         titleBinding.tvTitle.setText(text);
-    }
-
-    public void setTitleRightIcon(int iconRes) {
-        titleBinding.btnRight.setImageResource(iconRes);
-    }
-
-    public void setTitleLeftIcon(int iconRes) {
-        titleBinding.btnLeft.setImageResource(iconRes);
     }
 
     @Override
@@ -172,35 +159,14 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         titleBinding.btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickLeft(view);
-            }
-        });
-        titleBinding.btnRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickRight(view);
+                onLeftClick();
             }
         });
     }
 
-    /**
-     * TitleBar左边的点击事件
-     *
-     * @param view
-     */
     @Override
-    public void onClickLeft(View view) {
+    public void onLeftClick() {
         finish();
-    }
-
-    /**
-     * TitleBar右边的点击事件
-     *
-     * @param view
-     */
-    @Override
-    public void onClickRight(View view) {
-
     }
 
     @Override
