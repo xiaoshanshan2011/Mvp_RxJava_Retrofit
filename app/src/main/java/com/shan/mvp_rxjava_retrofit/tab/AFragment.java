@@ -18,6 +18,7 @@ import com.shan.mvp_rxjava_retrofit.adapter.BannerAdapter;
 import com.shan.mvp_rxjava_retrofit.bean.BannerBean;
 import com.shan.mvp_rxjava_retrofit.bean.MainTypeBean;
 import com.shan.mvp_rxjava_retrofit.bean.MovieBean;
+import com.shan.mvp_rxjava_retrofit.databinding.FragmentACommodityLayoutBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentATypeItemLayoutBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentATypeLayoutBinding;
 import com.shan.mvp_rxjava_retrofit.databinding.FragmentAViewpagerBinding;
@@ -34,6 +35,8 @@ import com.shan.mypubliclibrary.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.shan.mvp_rxjava_retrofit.R.layout.item;
+
 /**
  * Created by 陈俊山 on 2016/8/31.
  */
@@ -43,7 +46,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
 
     @Override
     public int bindItemLayout() {
-        return R.layout.item;
+        return item;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         super.initOnCreate(savedInstanceState);
         aPresenter = new APresenterImpl(this, getActivity());
         aPresenter.getMovieData();
-        //showPullRefresh();
+        showPullRefresh();
         initHeadView();
     }
 
@@ -85,11 +88,10 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
     @Override
     public void onSuccess(MovieBean movieBean) {
         List<MovieBean.ShowapiResBodyBean.DatalistBean> datalist = new ArrayList<>();
-
         for (int i = 0; i < 20; i++) {
             datalist.add(new MovieBean.ShowapiResBodyBean.DatalistBean("heheda"));
         }
-
+        commodity(datalist);
         setData(datalist);
         closeRefresh();
     }
@@ -163,8 +165,24 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         });
     }
 
-    private FragmentAViewpagerBinding mViewpagerBinding;
-    private FragmentATypeLayoutBinding mTypeLayoutBinding;
+    @Override
+    public void commodity(List<MovieBean.ShowapiResBodyBean.DatalistBean> datalist) {
+        mCommodityLayoutBinding.baseGridView.setAdapter(new CommonAdapter<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean>(getActivity(), item, datalist) {
+            @Override
+            protected void getItem(ItemBinding binding, MovieBean.ShowapiResBodyBean.DatalistBean bean, int position) {
+                binding.textView4.setText(bean.getMovieName());
+            }
+
+            @Override
+            protected void itemOnclick(MovieBean.ShowapiResBodyBean.DatalistBean bean, int position) {
+
+            }
+        });
+    }
+
+    private FragmentAViewpagerBinding mViewpagerBinding;//头部ViewPager
+    private FragmentATypeLayoutBinding mTypeLayoutBinding;//分类
+    private FragmentACommodityLayoutBinding mCommodityLayoutBinding;//分类
 
     /**
      * 初始化头部View
@@ -175,13 +193,16 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
 
         mTypeLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.fragment_a_type_layout, null, false);
         lvBinding.listView.addHeaderView(mTypeLayoutBinding.getRoot());
+
+        mCommodityLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.fragment_a_commodity_layout, null, false);
+        lvBinding.listView.addHeaderView(mCommodityLayoutBinding.getRoot());
     }
 
-    /*@Override
+    @Override
     public void onRefresh() {
         super.onRefresh();
         aPresenter.getMovieData();
-    }*/
+    }
 
     @Override
     public void onClick(View view) {

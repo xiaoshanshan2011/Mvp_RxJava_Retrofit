@@ -95,7 +95,7 @@ public class BFragment extends BaseFragment<FragmentBBinding, Object> implements
 
     @Override
     public void locationSuccess(AMapLocation location) {
-        setTitle(location.getPoiName() + "附近");
+        setTitle(location.getPoiName());
         mListener.onLocationChanged(location);// 显示系统小蓝点
     }
 

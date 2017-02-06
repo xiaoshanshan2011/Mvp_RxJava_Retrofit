@@ -5,12 +5,12 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shan.mypubliclibrary.R;
 import com.shan.mypubliclibrary.adapter.CommonAdapter;
 import com.shan.mypubliclibrary.databinding.ListviewLayoutBinding;
@@ -27,7 +27,7 @@ import java.util.List;
  * @param <D> ListVIew Item数据类型
  */
 
-public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment implements BindListener,View.OnClickListener,XRecyclerView.LoadingListener {
+public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment implements BindListener,View.OnClickListener,SwipeRefreshLayout.OnRefreshListener {
     protected final String TAG = this.getClass().getName();
     protected ListviewLayoutBinding lvBinding;//当子类是列表的时候这个才可用
     protected T mBinding;//内容布局
@@ -60,7 +60,7 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
                 linearLayout.addView(titleBinding.getRoot(), title_params);
 
                 lvBinding = DataBindingUtil.inflate(inflater, R.layout.listview_layout, container, false);
-                //lvBinding.refreshLayout.setEnabled(false);//关闭下拉刷新
+                lvBinding.refreshLayout.setEnabled(false);//关闭下拉刷新
                 LinearLayout.LayoutParams content_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 linearLayout.addView(lvBinding.getRoot(), content_params);
                 initOnCreate(savedInstanceState);
@@ -142,15 +142,15 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
 
     /**
      * 开启下拉刷新
-     *//*
+     */
     public void showPullRefresh() {
         if (lvBinding == null) {
             return;
         }
         lvBinding.refreshLayout.setColorSchemeResources(
-                R.color.light_sea_green,
+                R.color.color_0072fd,
                 R.color.light_pink,
-                R.color.light_sea_green,
+                R.color.color_0072fd,
                 R.color.light_pink);
         lvBinding.refreshLayout.setEnabled(true);//开启下拉刷新
         lvBinding.refreshLayout.setOnRefreshListener(this);
@@ -167,7 +167,7 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
         if (lvBinding != null && lvBinding.refreshLayout.isRefreshing()) {
             lvBinding.refreshLayout.setRefreshing(false);
         }
-    }*/
+    }
 
     public void setTitle(String text) {
         titleBinding.tvTitle.setText(text);
@@ -190,23 +190,13 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
 
     @Override
     public void closeRefresh() {
-        /*if (lvBinding != null) {
+        if (lvBinding != null) {
             lvBinding.refreshLayout.setRefreshing(false);
-        }*/
+        }
     }
 
     @Override
     public void onClick(View view) {
-
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onLoadMore() {
 
     }
 }

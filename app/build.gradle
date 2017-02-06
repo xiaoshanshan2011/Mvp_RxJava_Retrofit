@@ -27,19 +27,19 @@ android {
         config {
             keyAlias 'mvp_rxjava_retrofit'
             keyPassword '123456mn'
-            storeFile file('/home/project/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
+            storeFile file('/home/project/androidProject/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
             storePassword '123456mn'
         }
         release {
             keyAlias 'mvp_rxjava_retrofit'
             keyPassword '123456mn'
-            storeFile file('/home/project/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
+            storeFile file('/home/project/androidProject/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
             storePassword '123456mn'
         }
         debug {
             keyAlias 'mvp_rxjava_retrofit'
             keyPassword '123456mn'
-            storeFile file('/home/project/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
+            storeFile file('/home/project/androidProject/Mvp_RxJava_Retrofit/mvp_rxjava_retrofit.jks')
             storePassword '123456mn'
         }
     }
