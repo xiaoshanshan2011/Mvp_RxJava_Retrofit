@@ -8,8 +8,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.amap.api.location.AMapLocation;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.shan.amaplibrary.location.LocationListener;
+import com.shan.mvp_rxjava_retrofit.MyApp;
 import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.adapter.BannerAdapter;
 import com.shan.mvp_rxjava_retrofit.bean.BannerBean;
@@ -35,7 +38,7 @@ import java.util.List;
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView, View.OnClickListener {
+public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView, View.OnClickListener, LocationListener {
     private APresenterImpl aPresenter;
 
     @Override
@@ -60,13 +63,11 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         titleBinding.btnRight.setVisibility(View.VISIBLE);
         titleBinding.btnRight.setImageResource(R.mipmap.ic_search);
         titleBinding.tvLeft.setVisibility(View.VISIBLE);
-        titleBinding.tvLeft.setText("深圳");
         Drawable drawable = getActivity().getResources().getDrawable(R.mipmap.ic_arrow_botton);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         titleBinding.tvLeft.setCompoundDrawablePadding(5);
         titleBinding.tvLeft.setCompoundDrawables(null, null, drawable, null);
         titleBinding.btnRight.setOnClickListener(this);
-        //titleBinding.btnLeft.setOnClickListener(this);
     }
 
     @Override
@@ -205,5 +206,21 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
 
                 break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        MyApp.getInstance().getLocationManager().startLocation(this);
+    }
+
+    @Override
+    public void locationSuccess(AMapLocation location) {
+        titleBinding.tvLeft.setText(location.getCity());
+    }
+
+    @Override
+    public void locationFailure() {
+
     }
 }

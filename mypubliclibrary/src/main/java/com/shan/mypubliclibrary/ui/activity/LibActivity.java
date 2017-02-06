@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by 陈俊山 on 4/7/2559.
  */
-public abstract class LibActivity<T extends ViewDataBinding, D> extends FragmentActivity implements BindListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class LibActivity<T extends ViewDataBinding, D> extends FragmentActivity implements BindListener, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
     protected final String TAG = this.getClass().getName();
     protected T mBinding;//绑定布局文件并执行常用方法
     protected ListviewLayoutBinding lvBinding;//当子类是列表的时候这个才可用
@@ -174,5 +174,10 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         if (lvBinding != null) {
             lvBinding.refreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

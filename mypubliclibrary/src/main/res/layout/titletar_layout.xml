@@ -13,6 +13,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:maxLength="7"
                 android:id="@+id/tv_left"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

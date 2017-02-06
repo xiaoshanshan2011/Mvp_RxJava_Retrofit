@@ -27,7 +27,7 @@ import java.util.List;
  * @param <D> ListVIew Item数据类型
  */
 
-public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment implements BindListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment implements BindListener, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
     protected final String TAG = this.getClass().getName();
     protected ListviewLayoutBinding lvBinding;//当子类是列表的时候这个才可用
     protected T mBinding;//内容布局
@@ -193,5 +193,10 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
         if (lvBinding != null) {
             lvBinding.refreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

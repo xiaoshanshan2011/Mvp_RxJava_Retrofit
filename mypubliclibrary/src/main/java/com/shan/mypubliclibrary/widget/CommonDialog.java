@@ -19,10 +19,7 @@ import com.shan.mypubliclibrary.R;
  */
 public class CommonDialog {
     private Dialog dialog;
-    private Activity activity;
     private int gravity;//弹出宽的位置，默认居中
-    private WindowManager windowManager;
-    private Display display;
     private float width;//弹出框的宽度,默认0.8，例如：1表示全屏，0.8表示为屏幕宽度的0.8倍
     private float height;//默认布局自动加载高度
     private int shape;//弹出框形状，默认方角
@@ -36,19 +33,22 @@ public class CommonDialog {
 
 
     private CommonDialog(Builder builder) {
-        this.activity = (Activity) builder.context;
         this.gravity = builder.gravity;
         this.width = builder.width;
         this.height = builder.height;
         this.shape = builder.shape;
         this.resId = builder.resId;
         this.animResId = builder.animResId;
-        windowManager = activity.getWindowManager();
-        display = windowManager.getDefaultDisplay();
+        this.binding = builder.binding;
+        this.dialog = builder.dialog;
     }
 
     public static class Builder {
-        private Context context;
+        private WindowManager windowManager;
+        private Display display;
+        private Activity activity;
+        private Dialog dialog;
+        private ViewDataBinding binding;
         private int gravity = Gravity.CENTER;
         private float width = 0.8f;
         private float height = 0.0f;
@@ -57,7 +57,9 @@ public class CommonDialog {
         private int animResId = DIALOG_IN_OUT;
 
         public Builder(Context context) {
-            this.context = context;
+            this.activity = (Activity) context;
+            windowManager = activity.getWindowManager();
+            display = windowManager.getDefaultDisplay();
         }
 
         public Builder setGravity(int GRAVITY) {
@@ -91,6 +93,20 @@ public class CommonDialog {
         }
 
         public CommonDialog build() {
+            binding = DataBindingUtil.inflate(LayoutInflater.from(activity), resId, null, false);
+            dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//取消标题
+            dialog.setCanceledOnTouchOutside(true);//点击屏幕消失
+            dialog.setContentView(binding.getRoot());
+            Window dialogwWindow = dialog.getWindow();
+            WindowManager.LayoutParams lp = dialogwWindow.getAttributes();
+            lp.width = (int) (display.getWidth() * width);//设置Dialog宽度
+            if (height != 0)
+                lp.height = (int) (display.getHeight() * height);//设置Dialog高度
+            dialogwWindow.setAttributes(lp);
+            dialogwWindow.setGravity(gravity);//设置dialog显示位置
+            dialogwWindow.setBackgroundDrawableResource(shape);//设置dialog背景风格
+            dialogwWindow.setWindowAnimations(animResId);//设置动画效果
             return new CommonDialog(this);
         }
 
@@ -106,27 +122,15 @@ public class CommonDialog {
     }
 
     /**
-     * 显示Dialog
-     *
-     * @return
+     * 显示dialog
      */
-    public ViewDataBinding show() {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), resId, null, false);
-        dialog = new Dialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//取消标题
-        dialog.setCanceledOnTouchOutside(true);//点击屏幕消失
-        dialog.setContentView(binding.getRoot());
-        Window dialogwWindow = dialog.getWindow();
-        WindowManager.LayoutParams lp = dialogwWindow.getAttributes();
-        lp.width = (int) (display.getWidth() * width);//设置Dialog宽度
-        if (height != 0)
-            lp.height = (int) (display.getHeight() * height);//设置Dialog高度
-        dialogwWindow.setAttributes(lp);
-        dialogwWindow.setGravity(gravity);//设置dialog显示位置
-        dialogwWindow.setBackgroundDrawableResource(shape);//设置dialog背景风格
-        dialogwWindow.setWindowAnimations(animResId);//设置动画效果
-        dialog.show();
-        return binding;
+    public void show() {
+        if (dialog != null && !dialog.isShowing()) {
+            dialog.show();
+        }
     }
 
+    public ViewDataBinding getBinding() {
+        return binding;
+    }
 }

@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mvp_RxJava_Retrofit.iml" filepath="$PROJECT_DIR$/Mvp_RxJava_Retrofit.iml" />
       <module fileurl="file://$PROJECT_DIR$/amaplibrary/amaplibrary.iml" filepath="$PROJECT_DIR$/amaplibrary/amaplibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/amaplibrary/amaplibrary.iml" filepath="$PROJECT_DIR$/amaplibrary/amaplibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mypubliclibrary/mypubliclibrary.iml" filepath="$PROJECT_DIR$/mypubliclibrary/mypubliclibrary.iml" />
     </modules>

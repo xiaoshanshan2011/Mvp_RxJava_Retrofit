@@ -16,7 +16,7 @@
 #   public *;
 #}
 
-###########################以下都是API里边的类，最好都要避免混淆###############
+#以下都是API里边的类，最好都要避免混淆
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
@@ -27,39 +27,40 @@
 -keep public class * extends android.preference.Preference
 -keep public class * extends android.support.v4.**
 -keep public class com.android.vending.licensing.ILicensingService
-###############以下都是API里边的类，最好都要避免混淆 结束#######################
 
-###########################RxJava混淆#####################################
+#RxJava混淆
 -dontwarn rx.internal.util.unsafe.*
-###########################RxJava混淆结束##################################
 
-###########################Gson混淆#######################################
+#Gson混淆
 -keep public class com.google.gson.**
 -keep public class com.google.gson.** {public private protected *;}
 -keepattributes Signature
 -keepattributes *Annotation*
-#-keep public class com.project.mocha_patient.login.SignResponseData { private *; }  #对SignResponseData.Java的所有private 对象不进行obfuscation
-###########################Gson混淆 结束###################################
 
-###########################retrofit2混淆##################################
+#retrofit2混淆
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
-# Retain generic type information for use by reflection by converters and adapters.
 -keepattributes Signature
-# Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
-###########################retrofit2混淆 结束##############################
 
-###########################okHttp混淆#####################################
+#okHttp混淆
 -dontwarn com.squareup.okhttp.**
 -keep class com.squareup.okhttp.** { *;}
 -dontwarn okio.**
-###########################okHttp混淆 结束#################################
 
-###########################glide混淆#####################################
+#glide混淆
 -keep public class * implements com.bumptech.glide.module.GlideModule
     -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
       **[] $VALUES;
       public *;
     }
-###########################glide混淆 结束#################################
+
+#3D 地图
+-keep class com.amap.api.maps.**{*;}
+-keep class com.autonavi.amap.mapcore.*{*;}
+-keep class com.amap.api.trace.**{*;}
+
+#定位
+-keep class com.amap.api.location.**{*;}
+-keep class com.amap.api.fence.**{*;}
+-keep class com.autonavi.aps.amapapi.model.**{*;}
