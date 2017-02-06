@@ -1,5 +1,6 @@
 package com.shan.mvp_rxjava_retrofit;
 
+import com.shan.amaplibrary.location.LocationManager;
 import com.shan.mypubliclibrary.App;
 
 /**
@@ -23,5 +24,19 @@ public class MyApp extends App {
      */
     private void init() {
         instance = (MyApp) getApplicationContext();
+    }
+
+    private LocationManager mLocationManager = null;
+
+    public LocationManager getLocationManager() {
+        if (mLocationManager == null) {
+            mLocationManager = new LocationManager(this);
+        }
+        return mLocationManager;
+    }
+
+    public void destroyLocation() {
+        mLocationManager.destroyLocation();
+        mLocationManager = null;
     }
 }

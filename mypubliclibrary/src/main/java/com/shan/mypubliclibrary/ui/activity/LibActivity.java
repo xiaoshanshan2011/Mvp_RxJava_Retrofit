@@ -6,7 +6,6 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import java.util.List;
 /**
  * Created by 陈俊山 on 4/7/2559.
  */
-public abstract class LibActivity<T extends ViewDataBinding, D> extends FragmentActivity implements BindListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class LibActivity<T extends ViewDataBinding, D> extends FragmentActivity implements BindListener,View.OnClickListener {
     protected final String TAG = this.getClass().getName();
     protected T mBinding;//绑定布局文件并执行常用方法
     protected ListviewLayoutBinding lvBinding;//当子类是列表的时候这个才可用
@@ -52,7 +51,7 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
             linearLayout.addView(mBinding.getRoot(), content_params);
         } else if (bindItemLayout() != 0) {
             lvBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.listview_layout, null, false);
-            lvBinding.refreshLayout.setEnabled(false);//关闭下拉刷新
+            //lvBinding.refreshLayout.setEnabled(false);//关闭下拉刷新
             LinearLayout.LayoutParams content_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             linearLayout.addView(lvBinding.getRoot(), content_params);
         }
@@ -128,7 +127,7 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
     /**
      * 开启下拉刷新
      */
-    public void showPullRefresh() {
+    /*public void showPullRefresh() {
         lvBinding.refreshLayout.setColorSchemeResources(
                 R.color.light_sea_green,
                 R.color.light_pink,
@@ -148,7 +147,7 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
         if (lvBinding != null && lvBinding.refreshLayout.isRefreshing()) {
             lvBinding.refreshLayout.setRefreshing(false);
         }
-    }
+    }*/
 
     public void setTitle(String text) {
         titleBinding.tvTitle.setText(text);
@@ -172,7 +171,12 @@ public abstract class LibActivity<T extends ViewDataBinding, D> extends Fragment
     @Override
     public void closeRefresh() {
         if (lvBinding != null) {
-            lvBinding.refreshLayout.setRefreshing(false);
+            //lvBinding.refreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

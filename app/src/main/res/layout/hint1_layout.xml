@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|left"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提示"
+            android:textColor="@color/color_313131"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="你的当前位置实在深圳，是否要切换到深圳？"
+            android:textColor="@color/color_313131"
+            android:textSize="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:textColor="@color/color_0072fd"
+                android:id="@+id/btn_ok"
+                android:layout_width="65dp"
+                android:layout_height="40dp"
+                android:text="@string/ok"
+                android:textSize="12dp"/>
+
+            <Button
+                android:textColor="@color/color_0072fd"
+                android:id="@+id/btn_cancel"
+                android:layout_width="65dp"
+                android:layout_height="40dp"
+                android:text="@string/cancel"
+                android:textSize="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

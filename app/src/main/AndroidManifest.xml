@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
     <!--DownloadManager-->
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
-
     <!--允许程序获取网络状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!--允许程序访问WiFi网络信息-->
@@ -22,7 +21,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
     <!--用于访问GPS定位-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
@@ -32,6 +30,12 @@
     <!--用于申请获取蓝牙信息进行室内定位-->
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 更改设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
 
     <application
         android:name=".MyApp"

@@ -8,8 +8,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.amap.api.location.AMapLocation;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.shan.amaplibrary.location.LocationListener;
+import com.shan.mvp_rxjava_retrofit.MyApp;
 import com.shan.mvp_rxjava_retrofit.R;
 import com.shan.mvp_rxjava_retrofit.adapter.BannerAdapter;
 import com.shan.mvp_rxjava_retrofit.bean.BannerBean;
@@ -35,7 +38,7 @@ import java.util.List;
  * Created by 陈俊山 on 2016/8/31.
  */
 
-public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView, View.OnClickListener {
+public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBodyBean.DatalistBean> implements AView, View.OnClickListener, LocationListener {
     private APresenterImpl aPresenter;
 
     @Override
@@ -48,7 +51,7 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         super.initOnCreate(savedInstanceState);
         aPresenter = new APresenterImpl(this, getActivity());
         aPresenter.getMovieData();
-        showPullRefresh();
+        //showPullRefresh();
         initHeadView();
     }
 
@@ -60,30 +63,17 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         titleBinding.btnRight.setVisibility(View.VISIBLE);
         titleBinding.btnRight.setImageResource(R.mipmap.ic_search);
         titleBinding.tvLeft.setVisibility(View.VISIBLE);
-        titleBinding.tvLeft.setText("深圳");
         Drawable drawable = getActivity().getResources().getDrawable(R.mipmap.ic_arrow_botton);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         titleBinding.tvLeft.setCompoundDrawablePadding(5);
         titleBinding.tvLeft.setCompoundDrawables(null, null, drawable, null);
         titleBinding.btnRight.setOnClickListener(this);
-        //titleBinding.btnLeft.setOnClickListener(this);
-    }
-
-    @Override
-    public void onLeftClick() {
-        super.onLeftClick();
     }
 
     @Override
     protected void getListVewItem(ItemBinding binding, MovieBean.ShowapiResBodyBean.DatalistBean item, int position) {
         super.getListVewItem(binding, item, position);
         binding.textView4.setText(item.getMovieName());
-        /*if (position % 2 == 0) {
-            ImageCacheUtils.loadImage(getActivity(), "http://p5.qhmsg.com/dr/220__/t0161be18d99eab2224.jpg", binding.imageView);
-        } else {
-            ImageCacheUtils.loadImage(getActivity(), "http://www.2cto.com/uploadfile/2014/0725/20140725080303807.jpg", binding.imageView);
-        }*/
-
     }
 
     @Override
@@ -187,11 +177,11 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
         lvBinding.listView.addHeaderView(mTypeLayoutBinding.getRoot());
     }
 
-    @Override
+    /*@Override
     public void onRefresh() {
         super.onRefresh();
         aPresenter.getMovieData();
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
@@ -201,9 +191,22 @@ public class AFragment extends BaseFragment<ItemBinding, MovieBean.ShowapiResBod
                 intent.putExtra(CommonActivity.FRAGMENT_CLASS, SearchFragment.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_left:
-
-                break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        MyApp.getInstance().getLocationManager().startLocation(this);
+    }
+
+    @Override
+    public void locationSuccess(AMapLocation location) {
+        titleBinding.tvLeft.setText(location.getCity());
+    }
+
+    @Override
+    public void locationFailure() {
+
     }
 }

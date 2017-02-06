@@ -26,6 +26,6 @@ public class PDUtils extends Dialog {
         WindowManager.LayoutParams lp = dialogwWindow.getAttributes();
         dialogwWindow.setGravity(Gravity.CENTER);
         dialogwWindow.setAttributes(lp);
-        dialogwWindow.setBackgroundDrawableResource(R.drawable.dialog_square_shape);
+        dialogwWindow.setBackgroundDrawableResource(R.drawable.loding_dialog_square);
     }
 }

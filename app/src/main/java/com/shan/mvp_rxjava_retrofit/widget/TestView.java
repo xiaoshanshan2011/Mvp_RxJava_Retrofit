@@ -5,4 +5,5 @@ package com.shan.mvp_rxjava_retrofit.widget;
  */
 
 public class TestView {
+
 }
