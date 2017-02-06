@@ -9,8 +9,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_width="45dp"
+            android:layout_height="45dp"/>
 
         <TextView
             android:id="@+id/tv_name"

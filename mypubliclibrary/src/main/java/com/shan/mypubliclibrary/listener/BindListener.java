@@ -22,16 +22,10 @@ public interface BindListener {
     /*初始化TitleBar*/
     void initTitleBar();
 
-    /*设置TitleBar状态*/
-    void setTitleBarVisibility(int visibility);
-
-    /*TitleBar右边点击事件*/
-    void onClickLeft(View view);
-
-    /*TitleBar左边点击事件*/
-    void onClickRight(View view);
-
     /*关闭刷新*/
     void closeRefresh();
+
+    /*TitleBar左边按钮的点击事件*/
+    void onLeftClick();
 
 }

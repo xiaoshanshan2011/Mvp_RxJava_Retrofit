@@ -14,14 +14,14 @@
             android:padding="16dp"
             android:text="TextView"
             android:textSize="16dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"/>-->
 
         <View
             android:layout_width="match_parent"

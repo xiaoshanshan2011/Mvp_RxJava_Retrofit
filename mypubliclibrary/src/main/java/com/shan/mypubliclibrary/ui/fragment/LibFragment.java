@@ -141,14 +141,6 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
     }
 
     /**
-     * 初始化下拉刷新
-     */
-    private void initPullRefresh() {
-        //关闭下拉刷新
-        lvBinding.refreshLayout.setEnabled(false);
-    }
-
-    /**
      * 开启下拉刷新
      */
     public void showPullRefresh() {
@@ -177,21 +169,8 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
         }
     }
 
-    @Override
-    public void setTitleBarVisibility(int visibility) {
-        titleBinding.getRoot().setVisibility(visibility);
-    }
-
     public void setTitle(String text) {
         titleBinding.tvTitle.setText(text);
-    }
-
-    public void setTitleRightIcon(int iconRes) {
-        titleBinding.btnRight.setImageResource(iconRes);
-    }
-
-    public void setTitleLeftIcon(int iconRes) {
-        titleBinding.btnLeft.setImageResource(iconRes);
     }
 
     @Override
@@ -199,35 +178,14 @@ public abstract class LibFragment<T extends ViewDataBinding, D> extends Fragment
         titleBinding.btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickLeft(view);
-            }
-        });
-        titleBinding.btnRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickRight(view);
+                onLeftClick();
             }
         });
     }
 
-    /**
-     * TitleBar左边的点击事件
-     *
-     * @param view
-     */
     @Override
-    public void onClickLeft(View view) {
+    public void onLeftClick() {
         getActivity().finish();
-    }
-
-    /**
-     * TitleBar右边的点击事件
-     *
-     * @param view
-     */
-    @Override
-    public void onClickRight(View view) {
-
     }
 
     @Override
