@@ -9,16 +9,5 @@
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
-        <ImageButton
-            android:id="@+id/btn_location"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="8dp"
-            android:alpha="0.8"
-            android:background="@color/white"
-            android:src="@mipmap/ic_location"/>
     </RelativeLayout>
 </layout>
