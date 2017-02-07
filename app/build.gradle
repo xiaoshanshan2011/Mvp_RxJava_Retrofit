@@ -50,4 +50,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile project(':mypubliclibrary')
     compile project(':amaplibrary')
+    compile project(':sharelibrary')
 }
