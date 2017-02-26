@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/amaplibrary" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mypubliclibrary" />
+            <option value="$PROJECT_DIR$/sharelibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

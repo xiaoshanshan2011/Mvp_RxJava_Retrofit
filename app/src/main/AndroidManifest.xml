@@ -36,7 +36,6 @@
     <!-- 更改设置 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -58,7 +57,45 @@
             </intent-filter>
         </activity>
 
+        <!--友盟分享sdk-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--友盟分享sdk-->
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <!--友盟分享编辑页(只有新浪微博精简版，豆瓣人人腾讯微博需要)：-->
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:theme="@style/Theme.UMDefault"
+            android:excludeFromRecents="true"/>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
         <service android:name="com.amap.api.location.APSService"></service>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="589930809f06fd25800000b7">
+        </meta-data>
     </application>
 
 </manifest>

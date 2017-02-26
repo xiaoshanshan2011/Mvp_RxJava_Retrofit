@@ -1,5 +1,6 @@
 package com.shan.mvp_rxjava_retrofit.tab;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.shan.mvp_rxjava_retrofit.databinding.ActivityMainBinding;
 import com.shan.mypubliclibrary.listener.TitleBarListener;
 import com.shan.mypubliclibrary.manager.StatusBar;
 import com.shan.mypubliclibrary.manager.TabManager;
+import com.umeng.socialize.UMShareAPI;
 
 public class MainActivity extends FragmentActivity implements TitleBarListener {
 
@@ -58,4 +60,11 @@ public class MainActivity extends FragmentActivity implements TitleBarListener {
         mHint1LayoutBinding.tvMsg.setText("你的当前位置实在" + location.getCity() + "，是否要切换到" + location.getCity() + "？");
         dialog.show();
     }*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //分享或授权回调
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
 }
